@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────
+   DESIGN TOKENS — "Parchment"
+   Light editorial. Warm paper surfaces, ink text, one burnt-clay
+   accent. Exposed as Tailwind utilities (bg-bg, text-ink…) AND as
+   raw CSS variables on :root for hand-written rules.
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  --color-bg: #f1ede4;
+  --color-surface: #fbf8f1;
+  --color-surface-2: #f4f0e7;
+  --color-edge: #ddd5c5;
+  --color-edge-strong: #cfc5b2;
+  --color-ink: #1c1b18;
+  --color-muted: #6b6862;
+  --color-faint: #a39e93;
+  --color-accent: #b5452f;
+  --color-accent-dim: #9e3a26;
+  --color-danger: #c0392b;
+
+  /* Note palette — 6 soft paper tones (no neon sticky yellow) */
+  --color-note-sage: #e4eadd;
+  --color-note-blush: #f1e1dd;
+  --color-note-sky: #dce6ec;
+  --color-note-butter: #f1ead6;
+  --color-note-lilac: #e7e0ec;
+  --color-note-stone: #e6e3dc;
+
+  --font-display: "Clash Display", "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --radius-card: 6px;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   BASE
+   ────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fbf8f1;
+  }
+
+  /* Editorial display type: tight tracking, optical heft */
+  .font-display {
+    letter-spacing: -0.02em;
+  }
+
+  /* Focus ring — accent, square-ish, never a default blue blob */
+  :where(button, a, textarea, input, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  textarea {
+    font-family: inherit;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SCROLLBAR — thin, recessive
+   ────────────────────────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cabfa9 transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #cabfa9;
+  border: 3px solid var(--color-bg);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #b8ac95;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MASONRY (react-masonry-css)
+   Gutter handled by negative margin on the grid + padding on cols.
+   ────────────────────────────────────────────────────────────── */
+.masonry-grid {
+  display: flex;
+  width: auto;
+  margin-left: -20px;
+}
+.masonry-grid__column {
+  padding-left: 20px;
+  background-clip: padding-box;
+}
+.masonry-grid__column > div {
+  margin-bottom: 20px;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   ATMOSPHERE — paper grain + faint warm top light. Restrained.
+   ────────────────────────────────────────────────────────────── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Clamp long note bodies on the board (full text shows in the editor) */
+.note-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 12;
+  line-clamp: 12;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hairline ruled baseline used under section labels */
+.rule {
+  background-image: linear-gradient(
+    to right,
+    var(--color-edge) 0 1px,
+    transparent 1px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
