@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "An editorial, dark-first sticky notes app with localStorage persistence and voice-to-text.",
+  "description": "Margin — an editorial, light 'Parchment'-themed sticky notes app with localStorage persistence and voice-to-text.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
