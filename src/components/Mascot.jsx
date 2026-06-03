@@ -244,8 +244,8 @@ export function MascotBottom({ side = 'left' }) {
   // Slide up from below the fold to a peek, hold to wave, drop back down.
   // Left peeks in the first half of the 7s loop, right in the second.
   const anim = isLeft
-    ? { y: ['115%', '28%', '28%', '115%', '115%'], times: [0, 0.11, 0.34, 0.42, 1] }
-    : { y: ['115%', '115%', '28%', '28%', '115%', '115%'], times: [0, 0.5, 0.61, 0.84, 0.92, 1] }
+    ? { y: ['115%', '20%', '20%', '115%', '115%'], times: [0, 0.11, 0.34, 0.42, 1] }
+    : { y: ['115%', '115%', '20%', '20%', '115%', '115%'], times: [0, 0.5, 0.61, 0.84, 0.92, 1] }
 
   return (
     <div
@@ -253,7 +253,7 @@ export function MascotBottom({ side = 'left' }) {
       className={`pointer-events-none fixed bottom-0 z-30 flex min-[1700px]:hidden ${
         isLeft ? 'left-2 sm:left-5' : 'right-2 sm:right-5'
       }`}
-      style={{ width: 'clamp(104px, 30vw, 168px)' }}
+      style={{ width: 'clamp(124px, 34vw, 184px)' }}
     >
       <motion.div
         className="relative w-full"
