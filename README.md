@@ -4,7 +4,7 @@
 
 Margin is a calm, paper-inspired space for loose thoughts. Jot notes by typing or speaking, arrange them on a responsive masonry wall, and trust that everything persists in your browser — no account, no backend, no API keys.
 
-> **Live demo:** _deploy on Vercel and drop your URL here_ → `https://<your-app>.vercel.app`
+> **Live demo:** you can check this out on live vercel app https://stickynotesapp-two.vercel.app/
 
 <p>
   <img alt="React 18" src="https://img.shields.io/badge/React-18-1c1b18?style=flat-square" />
