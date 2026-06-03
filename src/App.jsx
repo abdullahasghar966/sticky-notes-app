@@ -7,7 +7,7 @@ import NoteBoard from './components/NoteBoard'
 import EmptyState from './components/EmptyState'
 import NoteEditor from './components/NoteEditor'
 import ToastStack from './components/Toast'
-import Mascot from './components/Mascot'
+import Mascot, { MascotBottom } from './components/Mascot'
 
 const VOICE_LANG =
   typeof navigator !== 'undefined' && navigator.language ? navigator.language : 'en-US'
@@ -107,6 +107,8 @@ export default function App() {
 
       <Mascot side="left" />
       <Mascot side="right" />
+      <MascotBottom side="left" />
+      <MascotBottom side="right" />
 
       {!storageAvailable && (
         <div className="relative z-20 border-b border-danger/25 bg-danger/10 px-5 py-2 text-center font-mono text-[11px] uppercase tracking-wide text-danger/90">
