@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { PlusIcon } from './icons'
 
 // Note count with a vertical number-flip whenever it changes.
@@ -6,18 +6,15 @@ function AnimatedCount({ count }) {
   return (
     <div className="flex items-baseline gap-1.5 font-mono text-[13px] tracking-wide text-muted">
       <span className="relative inline-flex h-[1.1em] overflow-hidden tabular-nums text-ink">
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.span
-            key={count}
-            initial={{ y: '110%', opacity: 0 }}
-            animate={{ y: '0%', opacity: 1 }}
-            exit={{ y: '-110%', opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-            className="block"
-          >
-            {count}
-          </motion.span>
-        </AnimatePresence>
+        <motion.span
+          key={count}
+          initial={{ y: '110%', opacity: 0 }}
+          animate={{ y: '0%', opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+          className="block"
+        >
+          {count}
+        </motion.span>
       </span>
       <span>{count === 1 ? 'note' : 'notes'}</span>
     </div>

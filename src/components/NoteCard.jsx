@@ -45,7 +45,7 @@ export default function NoteCard({ note, index, onEdit, onDelete }) {
   }
 
   return (
-    <motion.div layout="position" className="relative">
+    <div className="relative">
       {/* MIDDLE — entrance (runs once when scrolled into view) */}
       <motion.div
         initial={{ opacity: 0, y: 18, scale: 0.94 }}
@@ -119,6 +119,6 @@ export default function NoteCard({ note, index, onEdit, onDelete }) {
           <DeleteButton revealed={revealed} onConfirm={() => setExiting(true)} />
         </motion.article>
       </motion.div>
-    </motion.div>
+    </div>
   )
 }
