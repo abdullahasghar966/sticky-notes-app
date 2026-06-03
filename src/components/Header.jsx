@@ -36,13 +36,13 @@ export default function Header({ count, onNew }) {
         <span className="hidden sm:inline">Local-first · Voice ready</span>
       </div>
 
-      <div className="mt-5 flex items-end justify-between gap-6 border-b border-edge pb-6">
+      <div className="mt-5 flex flex-col gap-5 border-b border-edge pb-6 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
         <div>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-[44px] font-semibold leading-[0.95] tracking-tight text-ink sm:text-[58px]"
+            className="font-display text-[40px] font-semibold leading-[0.95] tracking-tight text-ink sm:text-[58px]"
           >
             Margin
           </motion.h1>
@@ -51,7 +51,7 @@ export default function Header({ count, onNew }) {
           </p>
         </div>
 
-        <div className="flex shrink-0 flex-col items-end gap-3.5">
+        <div className="flex items-center justify-between gap-4 sm:flex-col sm:items-end sm:gap-3.5">
           <AnimatedCount count={count} />
           <motion.button
             type="button"

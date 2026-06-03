@@ -42,18 +42,16 @@ export default function App() {
 
   const handleSave = useCallback(
     ({ content, color }) => {
-      setEditor((current) => {
-        if (current?.mode === 'edit') {
-          updateNote(current.note.id, { content, color })
-          pushToast({ type: 'success', message: 'Note updated' })
-        } else {
-          addNote({ content, color })
-          pushToast({ type: 'success', message: 'Note saved' })
-        }
-        return null
-      })
+      if (editor?.mode === 'edit') {
+        updateNote(editor.note.id, { content, color })
+        pushToast({ type: 'success', message: 'Note updated' })
+      } else {
+        addNote({ content, color })
+        pushToast({ type: 'success', message: 'Note saved' })
+      }
+      setEditor(null)
     },
-    [addNote, updateNote, pushToast],
+    [editor, addNote, updateNote, pushToast],
   )
 
   // Called by NoteCard *after* its exit animation finishes.

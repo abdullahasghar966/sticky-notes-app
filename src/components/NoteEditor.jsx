@@ -94,7 +94,7 @@ export default function NoteEditor({ editor, onSave, onClose, lang = 'en-US' }) 
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-end justify-center p-3 sm:items-center sm:p-6"
+      className="fixed inset-0 z-50 flex items-end justify-center p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:items-center sm:p-6"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -112,7 +112,7 @@ export default function NoteEditor({ editor, onSave, onClose, lang = 'en-US' }) 
         role="dialog"
         aria-modal="true"
         aria-label={isEdit ? 'Edit note' : 'New note'}
-        className="relative flex max-h-[88vh] w-full max-w-[560px] flex-col overflow-hidden rounded-[10px] border border-edge bg-surface shadow-2xl shadow-black/20"
+        className="relative flex max-h-[88dvh] w-full max-w-[560px] flex-col overflow-hidden rounded-[10px] border border-edge bg-surface shadow-2xl shadow-black/20"
         variants={{
           hidden: { opacity: 0, scale: 0.96, y: 14 },
           visible: { opacity: 1, scale: 1, y: 0 },
@@ -174,7 +174,7 @@ export default function NoteEditor({ editor, onSave, onClose, lang = 'en-US' }) 
                   aria-label={c.id}
                   aria-pressed={active}
                   onClick={() => setColor(c.bg)}
-                  className="relative flex h-6 w-6 items-center justify-center rounded-full transition-transform hover:scale-110"
+                  className="relative flex h-7 w-7 items-center justify-center rounded-full transition-transform hover:scale-110"
                 >
                   <span
                     className="h-5 w-5 rounded-full ring-1 ring-inset ring-black/10"
@@ -182,10 +182,12 @@ export default function NoteEditor({ editor, onSave, onClose, lang = 'en-US' }) 
                   />
                   {active && (
                     <motion.span
-                      layoutId="swatch-ring"
-                      className="absolute inset-0 rounded-full"
+                      key={c.id}
+                      className="pointer-events-none absolute inset-0 rounded-full"
                       style={{ border: `1.5px solid ${c.glow}` }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                     />
                   )}
                 </button>
