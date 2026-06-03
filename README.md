@@ -164,19 +164,4 @@ A light, editorial theme. Tokens live in `src/index.css` via Tailwind v4 `@theme
 
 ---
 
-## ▲ Deploy on Vercel
-
-1. Push to GitHub (already done).
-2. On [vercel.com](https://vercel.com): **Add New… → Project**, import this repo.
-3. Vercel auto-detects **Vite** — Build `npm run build`, Output `dist`. No env vars needed.
-4. **Deploy.** Every push to `main` then ships a production build automatically.
-
----
-
-## 📄 License
-
-No license is specified yet. If you'd like others to reuse this, add one (e.g. MIT).
-
----
-
 <sub>Built with React, Vite, Tailwind CSS v4, and Framer Motion.</sub>
