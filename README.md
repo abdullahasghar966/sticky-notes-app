@@ -1,4 +1,4 @@
-# Margin
+# Margin (sticky notes app)
 
 **An editorial sticky-notes app — capture thoughts by hand or by voice, kept entirely on your device.**
 
